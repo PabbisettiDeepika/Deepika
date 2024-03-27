@@ -16,7 +16,6 @@ class cCrudsSqlite implements iCruds
 		{
 			Class.forName("org.sqlite.JDBC");
 			conn = DriverManager.getConnection("jdbc:sqlite:D:\\Training\\PythonPrograms\\dmart.db");
-			System.out.print(conn);
 			statement = conn.createStatement();
 		}
 		catch (Exception error)
