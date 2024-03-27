@@ -18,7 +18,7 @@ class TestiCruds
 			System.out.println(error);
 		}
 	}
-	void showMenu() throws java.sql.SQLException
+	void showMenu()
 	{
 		int operationStatus = 0;
 		Dictionary<String, String> item;
