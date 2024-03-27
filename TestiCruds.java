@@ -1,6 +1,6 @@
 // Test cruds interface
 
-import java.util.*;;
+import java.util.*;
 import java.io.*;
 
 class TestiCruds
@@ -36,14 +36,14 @@ class TestiCruds
 			switch (choice)
 			{
 				case 0: System.out.print("Database connection closed");
-						System.exit(0);
+					System.exit(0);
 				case 1: item = oUserInterface.getItem();
-						operationStatus = oCruds.addItem(item);
-						oUserInterface.printOperationSuccess(item.get("ItemId"), "added", operationStatus);
-						break;
+					operationStatus = oCruds.addItem(item);
+					oUserInterface.printOperationSuccess(item.get("ItemId"), "added", operationStatus);
+					break;
 				case 2: items = oCruds.getItems();
-						oUserInterface.printItems(items);
-						break;
+					oUserInterface.printItems(items);
+					break;
 				default: System.out.println("Invalid choice!");
 			}
 		}
@@ -53,7 +53,7 @@ class TestiCruds
 	{
 		try
 		{
-			BufferedReader br = new BufferedReader(new FileReader("className.cfg"));
+			BufferedReader br = new BufferedReader(new FileReader("ClassName.cfg"));
 			String className = br.readLine();
 			TestiCruds oTestiCruds = new TestiCruds(className.trim());
 			oTestiCruds.showMenu();
