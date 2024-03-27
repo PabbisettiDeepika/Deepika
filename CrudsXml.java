@@ -27,21 +27,21 @@ class cCrudsXml implements iCruds
 		try
 		{
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-	        DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-	        document = docBuilder.parse(dataFile);
-	        items = document.getDocumentElement();
-	    }
-	    catch(Exception error)
-	    {
-	    	System.out.println(error);
-	    }
+			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+			document = docBuilder.parse(dataFile);
+			items = document.getDocumentElement();
+		}
+		catch(Exception error)
+		{
+			System.out.println(error);
+		}
 	}
 
 	public int addItem(Dictionary<String, String> pItem)
 	{
 		String fieldName;
 		int isItemAdded = 0;
-        item = document.createElement("Item");
+	        item = document.createElement("Item");
 		String fieldNames[] = {"ItemId", "Description", "UnitPrice", "StockQty", "SupplierId"};
 		for (int counter = 0; counter < fieldsCount; counter++)
 		{  
@@ -58,19 +58,19 @@ class cCrudsXml implements iCruds
 	public ArrayList<String[]> getItems()
 	{
 		ArrayList<String[]> items = new ArrayList<String[]>();
-	    NodeList itemsList = this.items.getElementsByTagName("Item");
-	    for (int counter = 0; counter < itemsList.getLength(); counter++)
-	    {
+		NodeList itemsList = this.items.getElementsByTagName("Item");
+		for (int counter = 0; counter < itemsList.getLength(); counter++)
+		{
 			String item[] = new String[fieldsCount];
-            Element element = (Element) itemsList.item(counter);
-            item[0] = element.getElementsByTagName("ItemId").item(0).getTextContent();
-            item[1] = element.getElementsByTagName("Description").item(0).getTextContent();
-           	item[2] = element.getElementsByTagName("UnitPrice").item(0).getTextContent();
-            item[3] = element.getElementsByTagName("StockQty").item(0).getTextContent();
-            item[4] = element.getElementsByTagName("SupplierId").item(0).getTextContent();
-	        items.add(item);
+			Element element = (Element) itemsList.item(counter);
+			item[0] = element.getElementsByTagName("ItemId").item(0).getTextContent();
+			item[1] = element.getElementsByTagName("Description").item(0).getTextContent();
+			item[2] = element.getElementsByTagName("UnitPrice").item(0).getTextContent();
+			item[3] = element.getElementsByTagName("StockQty").item(0).getTextContent();
+			item[4] = element.getElementsByTagName("SupplierId").item(0).getTextContent();
+			items.add(item);
 		}
-	    return items;
+		return items;
 	}
 
 	void saveItems()
@@ -78,14 +78,14 @@ class cCrudsXml implements iCruds
 		try
 		{
 			DOMSource source = new DOMSource(items);
-	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	        Transformer transformer = transformerFactory.newTransformer();
-	        Result result = new StreamResult(new File(dataFile));
-	        transformer.transform(source, result);
-	    }
-	    catch(Exception error)
-	    {
-	    	System.out.println(error);
-	    }
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			Result result = new StreamResult(new File(dataFile));
+			transformer.transform(source, result);
+		}
+		catch(Exception error)
+		{
+			System.out.println(error);
+		}
 	}
 }
