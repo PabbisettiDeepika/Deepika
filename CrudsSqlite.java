@@ -1,4 +1,4 @@
-// To implement iCruds to perform CRUDS operations using SQLite database
+// To implement iCruds to perform CRUDS operations using sqlite database
 
 import java.util.*;
 import java.sql.*;
