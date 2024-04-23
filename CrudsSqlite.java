@@ -1,4 +1,4 @@
-// To implement iCruds to perform CRUDS operations using sqlite database
+// To implement iCruds to perform CRUDS operations using SQLite database
 
 import java.util.*;
 import java.sql.*;
@@ -26,7 +26,7 @@ class cCrudsSqlite implements iCruds
 
 	public int addItem(Dictionary<String, String> pItem)
 	{
-		PreparedStatement pStatement;
+		PreparedStatement pStatement = null;
 		int isItemAdded = 0;
 		query = "Insert into "+ tableName + "(ItemId, Description, UnitPrice, StockQty, SupplierId) values(?, ?, ?, ?, ?);";
 		try
@@ -39,7 +39,7 @@ class cCrudsSqlite implements iCruds
 			pStatement.setString(5, pItem.get("SupplierId"));
 			isItemAdded = pStatement.executeUpdate();
 		}
-		catch(SQLException error)
+		catch(Exception error)
 		{
 			System.out.println(error);
 		}
